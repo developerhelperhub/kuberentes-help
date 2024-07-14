@@ -1,0 +1,9 @@
+alertmanager:
+  enabled: true
+
+server:
+  prefixURL: "/prometheus"
+  baseURL: "/prometheus"
+  persistentVolume:
+    enabled: true
+    size: 1Gi

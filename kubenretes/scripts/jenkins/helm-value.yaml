@@ -1,0 +1,4 @@
+controller:
+  admin:
+    password: admin
+  jenkinsUriPrefix: "/jenkins"

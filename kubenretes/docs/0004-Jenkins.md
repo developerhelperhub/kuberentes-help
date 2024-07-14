@@ -1,4 +1,4 @@
-# Guide Kubernetes - Jenkins 
+# 0004-Jenkins
 This document guides how to setup the Jenkins in the Kubernetes cluster. We are running the Kubernetes in Docker container with help of Kind
 
 
@@ -11,8 +11,7 @@ We’ll require an ingress controller to establish a connection between our loca
 
 Reference : https://kind.sigs.k8s.io/docs/user/ingress
 
-Create the yaml file jenkins-testing.yaml
-
+Create the yaml file ngress-cluster-config.yaml. This file is created under kind folder
 
     kind: Cluster
     apiVersion: kind.x-k8s.io/v1alpha4
@@ -32,7 +31,7 @@ Create the yaml file jenkins-testing.yaml
         hostPort: 443
         protocol: TCP
 ## Create the cluster 
-    kind create cluster --config jenkins-testing.yaml --name jenkins-testing-testing
+    kind create cluster --config kind/ingress-cluster-config.yaml --name jenkins-testing
 
 See cluster up and running:
 
@@ -76,8 +75,9 @@ Then, we’ll deploy the Kubernetes supported [ingress NGINX controller](https:/
 
 We can download the file from git to local, currently this ingress service type is default. We are changing to LoadBalancer. In cloud, if we are running cluster,  the cloud provides the load balancer  ip to connect to ingress. 
 
+This file is created under ingress folder
 
-    curl https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml > ingress-nginx.yaml
+    curl https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml > ingress/ingress-nginx.yaml
 
 Change the type NodePort to LoadBalancer in the file “ingress-nginx.yaml”
 
@@ -86,7 +86,7 @@ Change the type NodePort to LoadBalancer in the file “ingress-nginx.yaml”
 
 Deploy the ingress 
 
-    kubectl apply -f ingress-nginx.yaml
+    kubectl apply -f ingress/ingress-nginx.yaml
 
 Now the Ingress is all setup. Wait until is ready to process requests running:
 
@@ -158,7 +158,7 @@ Check the pods and services of jenkins
 
 Create sample application and route the request through the ingress controller to the jenkins
 
-Create yaml ingress resource file jenkins-resource.yaml
+Create yaml ingress resource file ingress-resource.yaml. This file is created under jenkins folder
 
     apiVersion: networking.k8s.io/v1
     kind: Ingress
@@ -181,7 +181,7 @@ Create yaml ingress resource file jenkins-resource.yaml
 
 Deploy the application and ingress resource
 
-    kubectl apply -f jenkins-resource.yaml
+    kubectl apply -f jenkins/ingress-resource.yaml
 
 Execute the URL http://localhost in the browser
 
@@ -195,7 +195,7 @@ Cleans Jenkins
     kubectl delete namespace devops
     kubectl create namespace devops
 
-Create helm value YAML file “helm-value.yaml”, in this, we have to change the URI prefix of Jenkins server
+Create helm value YAML file “helm-value.yaml”, in this, we have to change the URI prefix of Jenkins server. This file is created under jenkins folder.
 
     controller:
       admin:
@@ -206,10 +206,11 @@ Helm chart value configuration https://github.com/jenkinsci/helm-charts/blob/mai
 
 Install Jenkins 
 
-    helm install jenkins jenkins/jenkins --namespace devops -f helm-value.yaml
+    helm install jenkins jenkins/jenkins --namespace devops -f jenkins/helm-value.yaml
 
-Change yaml ingress resource file jenkins-resource.yaml.  The Jenkins URI Prefix and path should be same, if it is different, we have to add the rewrite annotation in the ingress resource
+Change yaml ingress resource file ingress-resource.yaml.  The Jenkins URI Prefix and path should be same, if it is different, we have to add the rewrite annotation in the ingress resource
 
+This file is created under jenkins folder.
 
     apiVersion: networking.k8s.io/v1
     kind: Ingress
@@ -231,7 +232,7 @@ Change yaml ingress resource file jenkins-resource.yaml.  The Jenkins URI Prefix
 
 Deploy
 
-    kubectl apply -f jenkins-resource.yaml
+    kubectl apply -f jenkins/ingress-resource.yaml
 
 Execute the URL http://localhost/jenkins in the browser
 

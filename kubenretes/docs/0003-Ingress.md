@@ -1,4 +1,4 @@
-# Guide Kubernetes - Ingress
+# 0003-Ingress
 
 https://www.baeldung.com/ops/kubernetes-kind
 
@@ -9,8 +9,7 @@ We’ll require an ingress controller to establish a connection between our loca
 
 Reference : https://kind.sigs.k8s.io/docs/user/ingress
 
-Create the yaml file nginx-ingress-testing.yaml
-
+Create the yaml file ngress-cluster-config.yaml. This file is created under kind folder
 
     kind: Cluster
     apiVersion: kind.x-k8s.io/v1alpha4
@@ -30,7 +29,7 @@ Create the yaml file nginx-ingress-testing.yaml
         hostPort: 443
         protocol: TCP
 ## Create the cluster 
-    kind create cluster --config nginx-ingress-testing.yaml --name nginx-ingress-testing
+    kind create cluster --config kind/ngress-cluster-config.yaml --name nginx-ingress-testing
 
 See cluster up and running:
 
@@ -74,8 +73,9 @@ Then, we’ll deploy the Kubernetes supported [ingress NGINX controller](https:/
 
 We can download the file from git to local, currently this ingress service type is default. We are changing to LoadBalancer. In cloud, if we are running cluster,  the cloud provides the load balancer  ip to connect to ingress. 
 
+This file is created under ingress folder
 
-    curl https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml > ingress-nginx.yaml
+    curl https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml > ingress/ingress-nginx.yaml
 
 Change the type NodePort to LoadBalancer in the file “ingress-nginx.yaml”
 
@@ -84,7 +84,7 @@ Change the type NodePort to LoadBalancer in the file “ingress-nginx.yaml”
 
 Deploy the ingress 
 
-    kubectl apply -f ingress-nginx.yaml
+    kubectl apply -f ingress/ingress-nginx.yaml
 
 Now the Ingress is all setup. Wait until is ready to process requests running:
 
@@ -131,7 +131,7 @@ If you look in the browser you will notice the name of the certificate `Common N
 
 Create sample application and route the request through the ingress controller to the application
 
-Create yaml file example-app.yaml
+Create yaml file test-example.yaml. This file is created under test-example folder
 
     kind: Pod
     apiVersion: v1
@@ -215,7 +215,7 @@ Create yaml file example-app.yaml
 
 Deploy the application and ingress resource
 
-    kubectl apply -f example-app.yaml
+    kubectl apply -f test-example/test-example.yaml
 
 Execute the URL http://localhost/bar and http://localhost/foo in the browser, We can see the response 
 

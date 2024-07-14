@@ -1,5 +1,5 @@
-# 0005-Prometheus
-This document guides how to setup the Prometheus in the Kubernetes cluster to monitor services in the Kubernetes cluster. We are running the Kubernetes in Docker container with help of Kind
+# 0006-Grafana
+This document guides how to setup the Grafana in the Kubernetes cluster to setup the a visualisation dashboard service in the Kubernetes cluster, it helps to visualise data from different source such Elasticsearch, Prometheus, InfluxDB, etc. We are running the Kubernetes in Docker container with help of Kind
 
 # Create cluster with Kind
 
@@ -28,13 +28,13 @@ Create the yaml file ngress-cluster-config.yaml. This file is created under kind
         hostPort: 443
         protocol: TCP
 ## Create the cluster 
-    kind create cluster --config kind/ingress-cluster-config.yaml --name prometheus-testing
+    kind create cluster --config kind/ingress-cluster-config.yaml --name grafana-testing
 
 See cluster up and running:
 
     kubectl get nodes
-    NAME                  STATUS   ROLES                  AGE     VERSION
-    prometheus-testing-control-plane   Ready    control-plane,master   2m12s   v1.23.5
+    NAME                            STATUS   ROLES           AGE   VERSION
+    grafana-testing-control-plane   Ready    control-plane   95s   v1.30.0
 
 
 ## Run a container to work in
@@ -126,11 +126,11 @@ NGINX Ingress creates a fake certificate which is served for default `HTTPS` tra
 If you look in the browser you will notice the name of the certificate `Common Name (CN) Kubernetes Ingress Controller Fake Certificate`
 
 
-# Setup Prometheus
+# Setup Grafana
 
-**Add the Prometheus Community Helm Repository**: First, you need to add the Prometheus community Helm repository to your Helm client:
+**Add the Grafana Community Helm Repository**: First, you need to add the Grafana community Helm repository to your Helm client:
 
-    helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+    helm repo add grafana https://grafana.github.io/helm-charts
     helm repo update
 
 Create name space on Kubernetes
@@ -142,30 +142,31 @@ Create name space on Kubernetes
 
 This helps ingress resource routing to multiple application based on path routing
 
-Create helm value YAML file “helm-value.yaml”, in this, we have to change the URI prefix of Prometheus server
+Create helm value YAML file “helm-value.yaml”, in this, we have to change the URI prefix of Grafana server
 
-This file is created under prometheus folder
+This file is created under grafana folder
 
-    alertmanager:
-      enabled: true
-    
-    server:
-      prefixURL: "/prometheus"
-      baseURL: "/prometheus"
-      persistentVolume:
-        enabled: true
-        size: 1Gi
+    adminUser: admin
+    adminPassword: admin
+    service:
+      type: ClusterIP
+      port: 80
+    grafana.ini:
+      server:
+        root_url: '%(protocol)s://%(domain)s:%(http_port)s/grafana/'
+        serve_from_sub_path: true
 
-Helm chart values https://github.com/prometheus-community/helm-charts/blob/main/charts/prometheus/values.yaml
+Helm chart values https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 
-Install Prometheus 
+Install Grafana 
 
-    helm install prometheus -n devops -f prometheus/helm-values.yaml prometheus-community/prometheus
+    helm install grafana -n devops grafana/grafana -f grafana/helm-values.yaml
 
 Create yaml ingress resource file ingress-resource.yaml.  The Jenkins URI Prefix and path should be same, if it is different, we have to add the rewrite annotation in the ingress resource
 
-This file is created under prometheus folder
+This file is created under grafana folder
 
+    
     apiVersion: networking.k8s.io/v1
     kind: Ingress
     metadata:
@@ -177,16 +178,16 @@ This file is created under prometheus folder
       - http:
           paths:
           - pathType: ImplementationSpecific
-            path: /prometheus
+            path: /grafana
             backend:
               service:
-                name: prometheus-server
+                name: grafana
                 port:
                   number: 80
 
 Deploy
 
-    kubectl apply -f prometheus/ingress-resource.yaml
+    kubectl apply -f grafana/ingress-resource.yaml
 
-Execute the URL http://localhost/prometheus in the browser
+Execute the URL http://localhost/grafana in the browser
 

@@ -1,4 +1,4 @@
-# Guide Kubernetes
+# 0001-Kubernetes
 
 
 ## Install Test Application
@@ -98,10 +98,4 @@ Add a line to the bottom of the `/etc/hosts` file on your computer (you will nee
 
 After you make this change, your web browser sends requests for `hello-world.example` URLs to Minikube.
 
-
-
-https://www.youtube.com/watch?v=72zYxSxifpM&
-
-
-[https://youtu.be/72zYxSxifpM](https://youtu.be/72zYxSxifpM)
 
