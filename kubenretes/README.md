@@ -1,7 +1,5 @@
-# kuberentes-help
-
-This guides the following service how can setup in the kuberentes cluster and explains the purpose in the application development
-
+# README
+This guides the following service how can setup in the Kuberentes cluster and explains the purpose in the application development
 
 # Infrastructure
 |              |                                                                                                                                                                                                                                                                         |
@@ -12,9 +10,21 @@ This guides the following service how can setup in the kuberentes cluster and ex
 | Helm         | Helm is a package manager for Kubernetes that helps you manage Kubernetes applications by defining, installing, and upgrading complex Kubernetes applications.                                                                                                          |
 | Alpine Linux | Alpine Linux is a lightweight and security-oriented Linux distribution based on musl libc and BusyBox. It's designed with simplicity, security, and efficiency in mind, making it popular for containerized environments due to its small size and minimalistic nature. |
 
-
 # DevOps
-|            |                                                                                                                                                                                                                                                               |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Jenkins    | Jenkins is an open-source automation server used to automate the processes involved in software development, such as building, testing, and deploying applications. It is widely used for continuous integration (CI) and continuous delivery (CD) pipelines. |
-| Prometheus | Prometheus is an open-source systems monitoring and alerting toolkit.   
+|         |                                                                                                                                                                                                                                                               |
+| ------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Jenkins | Jenkins is an open-source automation server used to automate the processes involved in software development, such as building, testing, and deploying applications. It is widely used for continuous integration (CI) and continuous delivery (CD) pipelines. |
+
+# Monitoring
+| Prometheus | Prometheus is an open-source systems monitoring and alerting toolkit.                                                                                                                                                                                                                                                                                                                                                      |
+| ---------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Grafana    | Grafana is an open-source visualization and monitoring tool that allows you to query, visualize, alert on, and understand your metrics, logs, and traces. It integrates with a wide range of data sources, including Prometheus, Elasticsearch, Graphite, InfluxDB, and many others. Grafana is often used for creating dashboards that help users analyze and monitor their applications and infrastructure in real-time. |
+
+# Application
+|                 |                                                                                                                                                                                                                                                       |
+| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Kong            | Kong is an open-source API gateway and microservices management layer built on top of Nginx. It is designed to handle all aspects of API traffic management, including routing, authentication, authorization, rate limiting, logging, and more.      |
+| Hashicorp Vault | HashiCorp Vault is a tool designed for securely storing and accessing secrets. It provides a centralized place to manage access to sensitive data such as API keys, passwords, certificates, and encryption keys.                                     |
+| Consul          | Consul is a tool developed by HashiCorp that provides service discovery, service mesh, and distributed key-value store capabilities. It is designed to simplify the deployment and management of distributed systems and microservices architectures. |
+
+
