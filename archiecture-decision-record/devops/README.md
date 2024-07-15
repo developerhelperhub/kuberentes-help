@@ -11,5 +11,6 @@ Above the high level architecture to run the services and connect these service 
 | -------------- | ------------------------------------------------------------------------------------- | ----------- |
 | ADR-00001      | We should have fully isolation between our application resources and DevOps resource. | 1.0.0       |
 | ADR-00002      | Our application should capable to quickly build, test and deploy                      | 1.0.0       |
+| ADR-00003      | We should have a ability for monitoring DevOps resource cluster                       | 1.0.0       |
 
 
