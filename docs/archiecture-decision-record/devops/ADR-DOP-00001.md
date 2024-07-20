@@ -1,4 +1,4 @@
-# ADR-00001
+# ADR-DOP-00001
 
 ## Requirement
 
@@ -21,6 +21,10 @@ We creates specific a namespace for DevOps related services. This helps to maint
 ****
 We creates separate Kubernetes cluster for this workload. 
 
+
+- Create isolated environments for monitoring, deploying, upgrading, installing the DevOps related services to ensuring that changes do not affect other workloads.
+- Identify the issues in a controlled environment, making it easier to diagnose and fix them.
+- Reduce the security issue and risk if any cyber attack happen and reduce the affected area of the system
 ----------
 ## References
 - REF000000001
