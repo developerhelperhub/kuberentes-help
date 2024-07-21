@@ -1,4 +1,16 @@
 # README
+This project setup is creating local Mac Book, For that, I am using docker container for setup the different environments for running the services and application. I am using the Kind tool to create the multiple Kubernetes clusters in locally. 
+
+
+- Install Docker
+- Kind
+## Install Kind
+    curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.20.0/kind-linux-amd64 chmod +x ./kind
+    
+    mv ./kind /usr/local/bin/kind
+    
+    kind --version
+
 
 ## Aplien Linux Box
 
@@ -52,9 +64,6 @@ I have installed the Terraform [terraform_1.9.2](https://releases.hashicorp.com/
     unzip /tmp/terraform_1.9.2_linux_386.zip -d /usr/local/bin
     
     terraform --version
-
-
-
 ## Reference
 - https://phoenixnap.com/kb/how-to-install-terraform
 
