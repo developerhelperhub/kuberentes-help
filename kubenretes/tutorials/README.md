@@ -29,5 +29,11 @@ This guides the following service how can setup in the Kuberentes cluster and ex
 | Kong            | Kong is an open-source API gateway and microservices management layer built on top of Nginx. It is designed to handle all aspects of API traffic management, including routing, authentication, authorization, rate limiting, logging, and more.      |
 | Hashicorp Vault | HashiCorp Vault is a tool designed for securely storing and accessing secrets. It provides a centralized place to manage access to sensitive data such as API keys, passwords, certificates, and encryption keys.                                     |
 | Consul          | Consul is a tool developed by HashiCorp that provides service discovery, service mesh, and distributed key-value store capabilities. It is designed to simplify the deployment and management of distributed systems and microservices architectures. |
+|                 |                                                                                                                                                                                                                                                       |
+
+# Database
+| Service | **Description**                                                                                                                                                                                                                                 |
+| ------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| MongoDB | MongoDB is a popular open-source NoSQL database that uses a document-oriented data model. It stores data in flexible, JSON-like documents, which allows for a more dynamic and schema-less design compared to traditional relational databases. |
 
 

@@ -1,0 +1,25 @@
+replicaSet:
+  enabled: true
+  name: rs0
+  replicas:
+    secondary: 1
+    arbiter: 1
+
+auth:
+  enabled: true
+  rootPassword: myRootPassword
+  username: myUser
+  password: myPassword
+  database: myDatabase
+
+service:
+  type: NodePort
+  nodePorts: 
+    mongodb: 31252
+  ports:
+    mongodb: 27017
+
+persistence:
+  enabled: true
+  size: 1Gi
+  storageClass: "standard"
