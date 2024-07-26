@@ -1,14 +1,13 @@
 # 0007-MongoDB
 This document guides help us, how can we setup the MongoDB in the Kubernetes cluster. This is basic tutorial where developer can setup MongoDB on Kubernetes which run in a local machine.
 
-# Perquisites 
+# Prerequisites 
 - Install Docker Desktop https://docs.docker.com/desktop/
 - Install the Kind for creating Kubernetes cluster inside Docker. This helps us easily test our application on your local environment and easily clean / delete cluster once testing completed and it will not effect existing working environment
+
 # Create cluster with Kind
 
-We’ll require an ingress controller to establish a connection between our local environment and the Kubernetes cluster. We are exposing the NodePort to connect the MongoDB. While developing or testing better to use the Kubernetes service type is “NodePort”. This helps us easily test our application in the cluster.
-
-Reference : https://kind.sigs.k8s.io/docs/user/ingress
+We’ll require to establish a connection between our local environment and the Kubernetes cluster. We are exposing the NodePort to connect the MongoDB. While developing or testing better to use the Kubernetes service type is “NodePort”. This helps us easily test our application in the cluster.
 
 Create the yaml file cluster-config.yaml. This file is created under mongodb folder. 
 
@@ -48,7 +47,7 @@ The Docker command you've provided runs an interactive shell session in an Alpin
 
 This setup is useful for testing and development, especially if you need access to files on your host machine or want to run network operations without worrying about port mapping.
 
-SH into running container command:
+sh into running container command:
 ****
     docker exec -it testing-linux-box sh
 
@@ -86,7 +85,7 @@ We should install following tools to setup MongoDB in our cluster.
     helm repo add bitnami https://charts.bitnami.com/bitnami
     helm repo update
 
-Create name space on Kubernetes
+Create namespace on Kubernetes, we are installing the service insider this namespace.
 
     kubectl create namespace database
 
@@ -145,5 +144,5 @@ We can install MongoDB Compass for testing the Mongo Db connection and create th
 ## Authentication Configuration
 ![](https://paper-attachments.dropboxusercontent.com/s_DB39112FCA5B40991E1F5FBD452106ED103D616BE13230B31BC03D387CD046A3_1721932331980_image.png)
 
-
-
+References
+* https://dev.to/binoy_59380e698d318
