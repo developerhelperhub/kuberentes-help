@@ -26,10 +26,16 @@ Project name is “My Ecommerce Site” and short name called “mes”. Normall
 
 
 - {project short name}-{environment}-{resource-name}
-- {mes}-{dev/prod}-{devops-working-env}
+- {mes}-{local/dev/prod}-{devops-working-env}
+
+**amd64/alpine**  
+
+https://hub.docker.com/r/amd64/alpine/
+
+Note: 
 
 
-    docker run -it --name mes-dev-devops-working-env -v ${HOME}:/root/ -v ${PWD}:/work -w /work --net host alpine sh
+    docker run -it --name mes-dev-devops-working-env -v ${HOME}:/root/ -v ${PWD}:/work -w /work --net host amd64/alpine sh
     
     docker existing container shell access
     
@@ -45,13 +51,17 @@ Curl a command line tool that developers use to transfer data to and from a serv
 
 ## Install Kuberentes “kubectl”
 
-Kubectl is the command line configuration tool for Kubernetes. 
+Kubectl is the command line configuration tool for Kubernetes v1.30.3.  
 
-    curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+    curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.30.3/bin/linux/amd64/kubectl
     
     chmod +x ./kubectl
     
     mv ./kubectl /usr/local/bin/kubectl
+
+Note: Installing the latest stable version of kubectl we can use the command
+
+    curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
 
 
 ## Install Terrafrom
@@ -59,11 +69,15 @@ Kubectl is the command line configuration tool for Kubernetes.
 I have installed the Terraform [terraform_1.9.2](https://releases.hashicorp.com/terraform/1.9.2/) version. We can download latest install file from Terraform site “https://releases.hashicorp.com/terraform/”
 
 
-    wget https://releases.hashicorp.com/terraform/1.9.2/terraform_1.9.2_linux_386.zip -P /tmp/
+    wget https://releases.hashicorp.com/terraform/1.9.3/terraform_1.9.3_linux_amd64.zip -P /tmp/
     
-    unzip /tmp/terraform_1.9.2_linux_386.zip -d /usr/local/bin
+    unzip /tmp/terraform_1.9.3_linux_amd64.zip -d /usr/local/bin
     
     terraform --version
+
+Note: Checking the latest version
+
+    curl -s https://releases.hashicorp.com/terraform/
 ## Reference
 - https://phoenixnap.com/kb/how-to-install-terraform
 
