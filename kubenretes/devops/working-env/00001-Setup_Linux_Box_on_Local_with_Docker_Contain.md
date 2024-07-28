@@ -21,7 +21,7 @@ The following tools are used to achieve this level of quality
 | Helm           | Helm is a package manager for Kubernetes, allowing you to define, install, and manage Kubernetes applications using charts. Helm charts are pre-configured Kubernetes resources that can be easily deployed and versioned.                                                                                                                       |
 
 ## Install Docker Desktop 
-****- Simplifies the setup of development environments.
+- Simplifies the setup of development environments.
 - Ensures consistency across different development, testing, and production environments.
 - Enables efficient use of resources by isolating applications in containers.
 
@@ -211,7 +211,7 @@ terraform apply #apply the terraform scripts
 kubectl cluster-info #verify the cluster information
 
 kubectl get node -o wide #verify the node
-```shell
+```
 ## References
 - [Install Kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
 - [Installation Docker on Alpine](https://docs.genesys.com/Documentation/System/latest/DDG/InstallationofDockeronAlpineLinux)
