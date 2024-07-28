@@ -1,4 +1,4 @@
-# 00001-Create Local Application cluster
+# WRK-ENV-00003-Setup local environment and Kubernetes cluster
 We need to create Kubernetes cluster to develop application in local environment. This cluster is used to install the tools and applications which we need to connect with local development environment. For example, we need to setup a database :
 
 

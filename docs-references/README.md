@@ -11,6 +11,9 @@
 | REF000000007     | Benefit of Keyloack open source authentication and authorisation service   | V1.0.0      |
 | REF000000008     | Use case and benefit Oauth2 protocol                                       | V1.0.0      |
 | REF000000009     | Use cases of grand type of Oauth2 protocol                                 | V1.0.0      |
-| REF000000010     | Use case for role need to be given Kubernetes cluster                      |             |
+| REF000000010     | Use case for role need to be given Kubernetes cluster                      | V1.0.0      |
+| REF000000011     | How to connect docker API from machine another machine docker Desktop      |             |
+
+Kubernetes
 
 

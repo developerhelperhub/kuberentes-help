@@ -1,4 +1,4 @@
-# 00001-Setup Linux Box on Local with Docker Container
+# WRK-ENV-00001-Setup Linux Box with Docker Container for development
 This section explains how to set up a Linux environment within a Docker container on a local machine. When working on multiple projects locally, it's common to install and configure various tools and services, each potentially requiring different versions. Using Docker ensures that the setup for one project doesn't affect others, maintaining complete isolation between project environments and their respective tools and services. 
 
 I've discovered setup tools that facilitate the quick configuration of local environments and onboarding of tools and services. This approach allows us to onboard team members swiftly in a software development context without spending time setting up the environment. By storing the Docker image in a container registry, other team members can easily use it to set up their local environments. 
@@ -212,8 +212,12 @@ kubectl cluster-info #verify the cluster information
 
 kubectl get node -o wide #verify the node
 ```
-## References
+## External References
 - [Install Kind](https://kind.sigs.k8s.io/docs/user/quick-start/)
 - [Installation Docker on Alpine](https://docs.genesys.com/Documentation/System/latest/DDG/InstallationofDockeronAlpineLinux)
 - [Setup Kubernetes Cluster on Docker with help of Kind](https://github.com/developerhelperhub/kuberentes-help/blob/main/terraform/tutorials/00001_-Setup%20Kubernetes%20Cluster%20on%20Docker%20with%20help%20of%20Kind.md)
+- [How to install Terraform](https://phoenixnap.com/kb/how-to-install-terraform)
+## Internal References
+- REF000000011
+
 
