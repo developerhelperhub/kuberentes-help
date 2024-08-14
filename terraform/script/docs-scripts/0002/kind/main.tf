@@ -1,5 +1,5 @@
 resource "kind_cluster" "default" {
-    name           = "devops-cluster"
+    name           = "devops-jenkins-cluster"
     wait_for_ready = true
 
   kind_config {

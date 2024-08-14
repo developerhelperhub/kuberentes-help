@@ -10,9 +10,9 @@ Following tools need to be installed before start this section and we should hav
 
 
 - Install Docker
-- Install Kind and create cluster of Kubernetes
-- Install the Terraform
-- Understand Helm Standing
+- Understand Kind and create cluster of Kubernetes
+- Understand the Terraform
+- Understand Helm
 
 We setup the Jenkins in the Kubernetes Cluster through Helm chart and its configuration.
 
