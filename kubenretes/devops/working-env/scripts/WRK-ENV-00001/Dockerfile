@@ -1,6 +1,8 @@
 FROM amd64/alpine
 
-ENV DOCKER_HOST=tcp://localhost:2375
+# Verify the docker gateway id address following command in local machine
+# docker network inspect bridge
+ENV DOCKER_HOST=tcp://172.17.0.1:2375
 
 #Install Docker and start docker
 RUN apk add --update docker openrc 

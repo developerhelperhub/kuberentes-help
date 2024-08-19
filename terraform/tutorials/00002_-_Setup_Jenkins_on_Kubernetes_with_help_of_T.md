@@ -1,9 +1,7 @@
 # 00002 - Setup Jenkins on Kubernetes with help of Terraform
 This section helps to basic understand how can we install the Jenkins in the Kubernetes Cluster with help of Terraform
 
-
-## Setup local environment to build DevOps resources
-
+## Setup local environment
 I use Docker containers to set up work environments for multiple applications([Setup Environment](https://dev.to/binoy_59380e698d318/setup-linux-box-on-local-with-docker-container-3k8)). This approach ensures fully isolated and maintainable environments for application development, allowing us to easily start and terminate these environments. Below is the Docker command to create the environment.
 ```shell
 docker run -it --name test-jenkins-envornment-box -v ${HOME}/root/ -v ${PWD}/work -w /work --net host developerhelperhub/kub-terr-work-env-box sh
@@ -65,16 +63,16 @@ provider "helm" {
     }
 }
 ```
-`**required_providers**`: This block specifies the external providers that Terraform will use. Providers are plugins that enable interaction with external APIs or cloud providers.
-`**kubernetes**` **provider**:
+**required_providers**: This block specifies the external providers that Terraform will use. Providers are plugins that enable interaction with external APIs or cloud providers.
+**kubernetes** **provider**:
 
-- `**source**`: Specifies the provider source, in this case, `"hashicorp/kubernetes"`, indicating it's from HashiCorp.
-- `**version**`: The version constraint `"~> 2.31"` means that Terraform will use the latest available version within the 2.x series starting from 2.31.
+- **source**: Specifies the provider source, in this case, "hashicorp/kubernetes", indicating it's from HashiCorp.
+- **version**: The version constraint `"~> 2.31"` means that Terraform will use the latest available version within the 2.x series starting from 2.31.
 
-`**helm**` **provider**:
+**helm** **provider**:
 
-- `**source**`: Specifies the provider source, `"hashicorp/helm"`.
-- `**version**`: The version constraint `"~> 2.14"` means that Terraform will use the latest available version within the 2.x series starting from 2.14.
+- **source**: Specifies the provider source, `"hashicorp/helm"`.
+- **version**: The version constraint `"~> 2.14"` means that Terraform will use the latest available version within the 2.x series starting from 2.14.
 
 **Create a main Configuration File (main.tf):**
 This file allows us to configure the Helm settings for Jenkins and set up the Ingress resource configuration for the Jenkins service on Kubernetes.
@@ -190,7 +188,8 @@ Now we can open the “http://localhost” in browser to see the login screen of
 
 ![](https://paper-attachments.dropboxusercontent.com/s_BA3BAE44DD4083A7F8698A3B07D54D5F29C93AE9DF365B514CDB45DDC32FE257_1723318588409_image.png)
 
-Reference
-* [Git Script](https://github.com/developerhelperhub/kuberentes-help/tree/main/terraform/script/docs-scripts/0002)
+##Reference
+* [Git Rep Doc](https://github.com/developerhelperhub/kuberentes-help/blob/main/terraform/tutorials/00002_-_Setup_Jenkins_on_Kubernetes_with_help_of_T.md)
+* [Git Repo Script](https://github.com/developerhelperhub/kuberentes-help/tree/main/terraform/script/docs-scripts/0002)
 * [Setup Environment](https://dev.to/binoy_59380e698d318/setup-linux-box-on-local-with-docker-container-3k8)
 * [Cluster creation with help Kind and Terrafrom](https://dev.to/binoy_59380e698d318/setup-linux-box-on-local-with-docker-container-3k8)
