@@ -7,38 +7,39 @@ https://kind.sigs.k8s.io/
 
 Install Kind 
 https://kind.sigs.k8s.io/docs/user/quick-start
-
-
-    # For Intel Macs
-    [ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.23.0/kind-darwin-amd64
-    # For M1 / ARM Macs
-    [ $(uname -m) = arm64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.23.0/kind-darwin-arm64
-    chmod +x ./kind
-    sudo mv kind /usr/local/bin/kind
-
+```shell
+# For Intel Macs
+[ $(uname -m) = x86_64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.23.0/kind-darwin-amd64
+# For M1 / ARM Macs
+[ $(uname -m) = arm64 ] && curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.23.0/kind-darwin-arm64
+chmod +x ./kind
+sudo mv kind /usr/local/bin/kind
+```
 
 **Comparison Kind vs Minikube** 
 
 **Architecture**: Kind and Minikube differ in their architecture. Kind creates lightweight Kubernetes clusters inside Docker containers, whereas Minikube sets up a single-node Kubernetes cluster on a local machine.
 
 ## Create Cluster Cluster 
-    kind create cluster --name nginx-ingress --image kindest/node:v1.23.5
-
+```shell
+kind create cluster --name nginx-ingress --image kindest/node:v1.23.5
+```
 
 ## List the clusters
-    kind get clusters
-
+```shell
+kind get clusters
+```
 
 ## Get the nodes
-    kubectl get nodes
+```shell
+kubectl get nodes
+```
 
 
 ## Delete Cluster 
-
-
-    kind delete clusters nginx-ingress
-
-
+```shell
+kind delete clusters nginx-ingress
+```
 
 ## Setup Ingress Cluster
 
@@ -48,27 +49,28 @@ https://kind.sigs.k8s.io/docs/user/ingress
 Create a YAML file (ngress-cluster-config.yaml, for example) that describes your Kubernetes cluster configuration. Below is a simple example that defines a single-node cluster:
 
 This file is created under kind folder
-
-    kind: Cluster
-    apiVersion: kind.x-k8s.io/v1alpha4
-    nodes:
-    - role: control-plane
-      kubeadmConfigPatches:
-      - |
-        kind: InitConfiguration
-        nodeRegistration:
-          kubeletExtraArgs:
-            node-labels: "ingress-ready=true"
-      extraPortMappings:
-      - containerPort: 80
-        hostPort: 80
-        protocol: TCP
-      - containerPort: 443
-        hostPort: 443
-        protocol: TCP
+```yaml
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+- role: control-plane
+  kubeadmConfigPatches:
+  - |
+    kind: InitConfiguration
+    nodeRegistration:
+      kubeletExtraArgs:
+        node-labels: "ingress-ready=true"
+  extraPortMappings:
+  - containerPort: 80
+    hostPort: 80
+    protocol: TCP
+  - containerPort: 443
+    hostPort: 443
+    protocol: TCP
+```
 
 **Create the Kubernetes Cluster:**
 Use `kind` to create the Kubernetes cluster using the YAML file you defined:
-
-    kind create cluster --config kind/cluster.yaml --name ingress-test-cluster
-
+```shell
+kind create cluster --config kind/cluster.yaml --name ingress-test-cluster
+```
