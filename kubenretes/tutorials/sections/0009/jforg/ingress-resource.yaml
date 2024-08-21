@@ -3,14 +3,18 @@ kind: Ingress
 metadata:
   name: jforg-ingress
   namespace: artifactory-oss
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: "0"
 spec:
+  ingressClassName: nginx
   rules:
-  - http:
-      paths:
-      - pathType: ImplementationSpecific
-        path: /
-        backend:
-          service:
-            name: artifactory-oss
-            port:
-              number: 8082
+    - host: jforg.artifactory.devops.myapp.com
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: artifactory-oss
+                port:
+                  number: 8082
