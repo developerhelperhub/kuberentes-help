@@ -1,0 +1,7 @@
+artifactory:
+  postgresql:
+    postgresqlPassword: postgres_password
+  nginx:
+    enabled: false
+  ingress:
+    enabled: false
