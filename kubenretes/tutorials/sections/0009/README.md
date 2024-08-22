@@ -10,9 +10,8 @@ docker run -it --name test-jfrog-envornment-box -v ${HOME}/root/ -v ${PWD}/work 
 
 The container contains Docker, Kubectl, Helm, Terraform, Kind, Git
 
-## Setup Jenkins on Kubernetes Cluster 
-
-I have created all the Terraform scripts, which are available in the GitHub repository. You can download and set up Jenkins on a Kubernetes cluster, which runs locally in a Docker container.
+## Setup JFrog on Kubernetes Cluster
+I have created all scripts, which are available in the GitHub repository. You can download and set up JFrog on a Kubernetes cluster, which runs locally in a Docker container.
 
 **Clone the repository** onto your local Linux machine to get started.
 ```shell
