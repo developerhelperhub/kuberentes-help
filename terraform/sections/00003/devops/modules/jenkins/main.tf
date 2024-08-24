@@ -12,8 +12,13 @@ resource "helm_release" "jenkins" {
   }
 
   set {
+    name  = "controller.admin.username"
+    value = var.admin_username
+  }
+
+  set {
     name  = "controller.admin.password"
-    value = "admin"
+    value = var.admin_password
   }
 
   timeout = 600
@@ -33,6 +38,7 @@ resource "kubernetes_ingress_v1" "jenkins-ingress" {
 
   spec {
     rule {
+      host = var.domain_name
       http {
         path {
           path     = "/"

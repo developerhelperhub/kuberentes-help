@@ -1,12 +1,25 @@
 terraform init
 terraform init -upgrade
 
+terraform workspace new devops_testing
+terraform workspace select devops_testing
+
 terraform plan
+terraform apply  -var="kind_cluster_name=devops-test-cluster"  -var="jenkins_admin_username=test_admin"
+terraform destroy -var="kind_cluster_name=devops-test-cluster"
 
-terraform apply
+terraform workspace select default
+terraform workspace delete devops_testing
 
-terraform destroy
+terraform workspace new devops_prod
+terraform workspace select devops_prod
 
+terraform plan
+terraform apply  -var="kind_cluster_name=devops-prod-cluster" -var="jenkins_admin_username=prod_admin"
+terraform destroy -var="kind_cluster_name=devops-prod-cluster"
+
+terraform workspace select default
+terraform workspace delete devops_prod
 
 chmod +x terraform-clean.sh
 ./terraform-clean.sh
