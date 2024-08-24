@@ -11,4 +11,5 @@ resource "random_password" "random_password_16" {
   special = true
   upper   = true
   lower   = true
+  override_special = "#$%&"  # Only these special characters are allowed
 }

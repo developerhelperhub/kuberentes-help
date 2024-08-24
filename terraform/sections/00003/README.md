@@ -5,7 +5,7 @@ terraform workspace new devops_testing
 terraform workspace select devops_testing
 
 terraform plan
-terraform apply  -var="kind_cluster_name=devops-test-cluster"  -var="jenkins_admin_username=test_admin"
+terraform apply  -var="kind_cluster_name=devops-test-cluster"  -var="jenkins_admin_username=my_test_admin"
 terraform destroy -var="kind_cluster_name=devops-test-cluster"
 
 terraform workspace select default
