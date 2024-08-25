@@ -440,7 +440,7 @@ Add our domain to the bottom of the `/etc/hosts` file on your local machine. Thi
 127.0.0.1 jenkins.devops.com
 ```
 We can open the artifactory UI in the browser “http://jenkins.devops.com/”
-**Note:** Username and password will be available in the Terraform state file
+*Note:** Username and password will be available in the Terraform state file
 
 **Destroy and clean the resources**
 Following command can be used clean all resources which installed by Terraform and its supporting files
