@@ -1,3 +1,4 @@
+#This module is used to manage Jenkins-related resources, providers and Kubernetes ingress configuration. The Helm Jenkins support version 5.4.2.
 resource "helm_release" "jenkins" {
   name       = "jenkins"
   repository = "https://charts.jenkins.io"
@@ -26,7 +27,7 @@ resource "helm_release" "jenkins" {
   depends_on = [var.kubernetes_namespace]
 }
 
-
+# Jenkins ingress configuration 
 resource "kubernetes_ingress_v1" "jenkins-ingress" {
   metadata {
     name      = "jenkins-ingress"

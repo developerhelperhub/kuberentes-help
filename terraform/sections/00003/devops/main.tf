@@ -1,3 +1,4 @@
+#Installing the cluster in Docker
 module "kind_cluster" {
   source = "./modules/kind"
 
@@ -6,6 +7,7 @@ module "kind_cluster" {
   https_port = 443
 }
 
+#Configuring the kubenretes provider based on the cluster information
 provider "kubernetes" {
 
   host                   = module.kind_cluster.endpoint
@@ -14,6 +16,7 @@ provider "kubernetes" {
   cluster_ca_certificate = module.kind_cluster.cluster_ca_certificate
 }
 
+#Installing the ingress controller in the cluster, this ingress support by kind. This ingress controller will be different based on the clusters such as AWS, Azure, Etc.
 module "kind_ingress" {
   source = "./modules/kind/ingress"
 
@@ -25,6 +28,7 @@ module "kind_ingress" {
   depends_on = [module.kind_cluster]
 }
 
+#Configuring the helm provider based on the cluster information
 provider "helm" {
     kubernetes {
         host                   = module.kind_cluster.endpoint
@@ -34,6 +38,7 @@ provider "helm" {
     }
 }
 
+#Installing the namespace in the Kuberenetes cluster
 module "kubernetes_namespace" {
   source = "./modules/kubernetes/namespace"
 
@@ -42,7 +47,7 @@ module "kubernetes_namespace" {
   depends_on = [module.kind_ingress]
 }
 
-
+#Instaling the jenkins
 module "jenkins" {
   source = "./modules/jenkins"
   
