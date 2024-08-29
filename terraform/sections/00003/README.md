@@ -434,12 +434,12 @@ terraform apply  -var="kind_cluster_name=devops-test-cluster"  -var="jenkins_adm
 ```
 **Note:** The Terraform state file should be kept secure and encrypted (using encryption at rest) because it contains sensitive information, such as usernames, passwords, and Kubernetes cluster details etc.
 
-Add our domain to the bottom of the `/etc/hosts` file on your local machine. This configuration should not be inside our working Linux box “test-jforg-envornment-box”; it should be applied to your personal machine's `/etc/hosts` file. 
+Add our domain to the bottom of the `/etc/hosts` file on your local machine. This configuration should not be inside our working Linux box “test-jenkins-module-envornment-box ”; it should be applied to your personal machine's `/etc/hosts` file. 
 (you will need administrator access):
 ```shell
 127.0.0.1 jenkins.devops.com
 ```
-We can open the artifactory UI in the browser “http://jenkins.devops.com/”
+We can open the Jenkins UI in the browser “http://jenkins.devops.com/”
 *Note:** Username and password will be available in the Terraform state file
 
 **Destroy and clean the resources**
