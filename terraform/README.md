@@ -20,14 +20,9 @@ We setup the Jenkins in the Kubernetes Cluster through Helm chart and its config
 | ----- | ---------------------------------------------------- |
 | 00001 | Setup Kubernetes Cluster on Docker with help of Kind |
 | 00002 | Setup Terraform - Jenkins                            |
-
-
-
-|           |  |
-| --------- |  |
-| Variable  |  |
-| Module    |  |
-| Workspace |  |
-|           |  |
+| 00003 | Module Design Jenkins Deployment in Kubernetes       |
+| 00004 | Maintain Module Version                              |
+| 00004 | Module Documentation Github                          |
+|       |                                                      |
 
 
