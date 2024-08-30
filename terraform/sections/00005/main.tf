@@ -1,7 +1,3 @@
-module "common" {
-    source = "./devops/modules/common"
-}
-
 module "devops" {
   source = "./devops"
 
