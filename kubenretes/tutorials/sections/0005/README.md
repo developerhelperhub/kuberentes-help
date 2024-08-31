@@ -138,6 +138,7 @@ If you look in the browser you will notice the name of the certificate `Common N
 ```shell
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
+helm search repo prometheus-community
 ```
 
 Create name space on Kubernetes
