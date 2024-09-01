@@ -60,7 +60,7 @@ pipeline {
           sh '''
             cd spring-boot-rest-api-app
             ls
-            docker build -t developerhelperhub/spring-boot-startup-performance:latest .
+            docker build -t {your-docker-hub-account}/spring-boot-startup-performance:latest .
           '''
         }
       }
@@ -69,7 +69,7 @@ pipeline {
       steps {
         withCredentials([string(credentialsId: 'docker-access-token', variable: 'password')]) {
           container('docker') {
-            sh 'docker login -u developerhelperhub -p ${password}'
+            sh 'docker login -u {your-docker-hub-account} -p ${password}'
           }
         }
       }
@@ -77,7 +77,7 @@ pipeline {
     stage('Push-Images-Docker-to-DockerHub') {
       steps {
         container('docker') {
-          sh 'docker push developerhelperhub/spring-boot-startup-performance:latest'
+          sh 'docker push {your-docker-hub-account}/spring-boot-startup-performance:latest'
         }
       }
     }

@@ -8,22 +8,12 @@ https://www.jenkins.io/doc/book/installing/kubernetes/#setup-jenkins-on-kubernet
 https://plugins.jenkins.io/kubernetes/
 https://www.jenkins.io/doc/book/platform-information/support-policy-java/
 https://www.jenkins.io/doc/book/managing/nodes/
-https://docs.docker.com/reference/cli/docker/login/
+
 https://blog.thecloudside.com/docker-in-docker-with-jenkins-pod-on-kubernetes-f2b9877936f2
 
 docker login should before push
 
 curl -u admin:11ce29d4ae55b5b2341a63877d30175128 -o agent.jar http://localhost/jnlpJars/agent.jar
-
-docker build -t developerhelperhub/graalvm-22-muslib-maven .
-
-vi ~/.docker/config.json
-
-Rename credsStore to credStore and save.
-
-cat my_password.txt | docker login --username developerhelperhub --password-stdin
-
-docker push developerhelperhub/graalvm-22-muslib-maven
 
 docker run -d --name jenkins-agent -e JENKINS_SECRET=admin -e JENKINS_NAME=admin developerhelperhub/graalvm-jenkins-agent
 

@@ -2,17 +2,17 @@ Run the development environment in Docker for developers working on Kubernetes p
 
 Build docker image
 ```shell
-docker build -f developerhelperhub/kub-terr-work-env-box .
+docker build -f {your-docker-hub-account}/kub-terr-work-env-box .
 ```
 
 Push docker image to docker hub 
 ```shell
-docker push developerhelperhub/kub-terr-work-env-box
+docker push {your-docker-hub-account}/kub-terr-work-env-box
 ```
 
 Run docker container sh mode
 ```shell
-docker run -it --name local-envornment-box -v ${HOME}/root/ -v ${PWD}/work -w /work --net host developerhelperhub/kub-terr-work-env-box sh
+docker run -it --name local-envornment-box -v ${HOME}/root/ -v ${PWD}/work -w /work --net host {your-docker-hub-account}/kub-terr-work-env-box sh
 ```
 
 Verify the service 
