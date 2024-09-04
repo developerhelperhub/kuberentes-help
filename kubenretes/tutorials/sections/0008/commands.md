@@ -36,18 +36,29 @@ kubectl delete -n jenkins pods --field-selector status.phase!=Running
 docker network inspect bridge
 "Gateway": "172.17.0.1"
 
-kubectl delete -n jenkins pod graalvm-22-muslib-maven-pod-builder
-kubectl apply -n jenkins -f maven-repo-pv-pvc.yaml
-kubectl get -n jenkins pv
-kubectl get -n jenkins pvc
+kubectl delete -n devops pod graalvm-22-muslib-maven-pod-builder
+kubectl apply -n devops -f maven-repo-pv-pvc.yaml
+kubectl get -n devops pv
+kubectl get -n devops pvc
 
-kubectl apply -n jenkins -f builder-pod.yaml
+kubectl -n devops create configmap maven-settings --from-file=settings.xml
+kubectl -n devops delete configmap maven-settings
 
-kubectl -n jenkins exec -it graalvm-22-muslib-maven-pod-builder -c builder -- sh
+kubectl -n devops create secret generic maven-credentials --from-file=settings-security.xml
+kubectl -n devops delete secret maven-credentials
+kubectl -n devops get secret
+
+kubectl apply -n devops -f graalvm-22-muslib-maven-jenkins-agent-template.yaml
+
+kubectl -n devops exec -it graalvm-22-muslib-maven-jenkins-agent-template -c builder -- sh
 
 du -sh /root/.m2
 
-kubectl -n jenkins exec -it graalvm-22-muslib-maven-pod-builder -c docker -- sh
+kubectl -n jenkins exec -it graalvm-22-muslib-maven-jenkins-agent-template -c docker -- sh
+
+kubectl delete -n devops -f graalvm-22-muslib-maven-jenkins-agent-template.yaml
+
+31/ 32 
 
 docker ps
 echo $DOCKER_HOST

@@ -1,45 +1,14 @@
 pipeline {
   agent {
     kubernetes {
-      yaml '''
-        apiVersion: v1
-        kind: Pod
-        spec:
-          containers:
-          - name: builder
-            image: developerhelperhub/graalvm-22-muslib-maven:latest
-            command:
-            - cat
-            tty: true
-            volumeMounts:
-            - mountPath: /root/.m2
-              name: maven-repo
-          - name: docker
-            image: docker:latest
-            env:
-            - name: DOCKER_HOST
-              value: "tcp://172.17.0.1:2375"
-            command:
-            - cat
-            tty: true
-            volumeMounts:
-             - mountPath: /var/run/docker.sock
-               name: docker-sock
-          volumes:
-          - name: maven-repo
-            persistentVolumeClaim:
-              claimName: maven-repo-pvc
-          - name: docker-sock
-            hostPath:
-              path: /var/run/docker.sock    
-        '''
+      inheritFrom 'graalvm-22-muslib-maven-jenkins-agent-template'
     }
   }
   stages {
     stage('Clone Application Git Repo') {
       steps {
         container('builder') {
-          git branch: 'main', changelog: false, poll: false, url: 'https://github.com/developerhelperhub/spring-boot-startup-performance.git'
+          git branch: 'main', changelog: false, poll: false, url: 'https://github.com/developerhelperhub/spring-boot-graalvm-jenkins-pipeline.git'
         }
       }
     }  
