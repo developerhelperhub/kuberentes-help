@@ -3,6 +3,9 @@
 # Overview
 This section outlines how to set up an efficient CI/CD pipeline in Jenkins, running on a Kubernetes cluster. The pipeline is designed to build Docker images that can be deployed in containers. In this section, I didn’t include the deploy image on Kubernetes cluster
 
+![](https://paper-attachments.dropboxusercontent.com/s_BA3BAE44DD4083A7F8698A3B07D54D5F29C93AE9DF365B514CDB45DDC32FE257_1725561587363_devops-Jenkins+Deployment.drawio+1.png)
+
+
 # Objective
 In a microservice architecture, it is crucial to focus on scalability, performance, security, and maintainability throughout the CI/CD process in the software development life cycle. Based on my analysis and the challenges identified, this document highlights key design considerations to achieve a reliable and efficient CI/CD implementation. 
 
