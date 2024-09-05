@@ -6,6 +6,7 @@ metadata:
     app: jenkins-agent
 spec:
   containers:
+    # This container is used to build the native image and maven related configuration
   - name: builder
     image: developerhelperhub/graalvm-22-muslib-maven:latest
     command:
@@ -20,6 +21,7 @@ spec:
       subPath: settings.xml
     - name: maven-repo
       mountPath: /root/.m2
+  # This container is used to connect the docker engine to manage docker process. Here, local docker engine is connecting. We can use remote docker egine 
   - name: docker
     image: docker:latest
     env:
