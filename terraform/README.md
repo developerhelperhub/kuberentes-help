@@ -16,13 +16,14 @@ Following tools need to be installed before start this section and we should hav
 
 We setup the Jenkins in the Kubernetes Cluster through Helm chart and its configuration.
 
-| No    | Titile                                               |
-| ----- | ---------------------------------------------------- |
-| 00001 | Setup Kubernetes Cluster on Docker with help of Kind |
-| 00002 | Setup Terraform - Jenkins                            |
-| 00003 | Module Design Jenkins Deployment in Kubernetes       |
-| 00004 | Maintain Module Version                              |
-| 00004 | Module Documentation Github                          |
-| 00005 | Jfrog Deployment in Kubernetes                       |
+| No    | Titile                                                 |
+| ----- | ------------------------------------------------------ |
+| 00001 | Setup Kubernetes Cluster on Docker with help of Kind   |
+| 00002 | Setup Terraform - Jenkins                              |
+| 00003 | Module Design Jenkins Deployment in Kubernetes         |
+| 00004 | Maintain Module Version                                |
+| 00004 | Module Documentation Github                            |
+| 00005 | Jfrog Deployment in Kubernetes                         |
+| 00006 | Module Jenkins Agent Maven Configuration in Kubernetes |
 
 
