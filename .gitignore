@@ -40,3 +40,6 @@ terraform.rc
 
 settings-security.xml
 settings.xml
+
+microservices-development-cluster-config
+devops-development-cluster-config

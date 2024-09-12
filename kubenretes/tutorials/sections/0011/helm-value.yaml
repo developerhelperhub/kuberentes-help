@@ -1,0 +1,7 @@
+
+auth:
+  adminUser: "admin"
+  adminPassword: "password123"
+persistence:
+  enabled: true 
+persistence.size: "8Gi"
