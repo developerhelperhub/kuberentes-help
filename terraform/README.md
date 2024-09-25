@@ -25,5 +25,6 @@ We setup the Jenkins in the Kubernetes Cluster through Helm chart and its config
 | 00004 | Module Documentation Github                            |
 | 00005 | Jfrog Deployment in Kubernetes                         |
 | 00006 | Module Jenkins Agent Maven Configuration in Kubernetes |
+| 00007 | Keycloak Deployment in Kubernetes                      |
 
 
