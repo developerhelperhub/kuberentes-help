@@ -25,6 +25,11 @@ This cover the basic tutorial to setup the service in the Kubernetes and what ar
 ![](https://paper-attachments.dropboxusercontent.com/s_DEF5A2930ED2084A07D06967D41726AD6BFBBC4EC66A3C85ACD7D9BB270F8A7B_1726845908289_Microservice-Monitoring.drawio+1.png)
 
 
+**API Gateway Route Design**
+
+![](https://paper-attachments.dropboxusercontent.com/s_DEF5A2930ED2084A07D06967D41726AD6BFBBC4EC66A3C85ACD7D9BB270F8A7B_1727545885111_Microservice-Kong+API+Gateway.drawio.png)
+
+****
 **High Availability and Scalability Deployment Design**
 
 ![](https://paper-attachments.dropboxusercontent.com/s_DEF5A2930ED2084A07D06967D41726AD6BFBBC4EC66A3C85ACD7D9BB270F8A7B_1726857196354_Microservice-Microservices+Deployments.drawio+2.png)
